@@ -39,6 +39,7 @@ If you use this code, please cite our paper:
 
 """
 
+
 def train(model, device, train_loader, optimizer, epoch, best_rmse, best_mae):
     model.train()
     running_loss = 0.0
@@ -51,7 +52,7 @@ def train(model, device, train_loader, optimizer, epoch, best_rmse, best_mae):
         running_loss += loss.item()
         if i % 100 == 0:
             print('[%d, %5d] loss: %.3f, The best rmse/mae: %.6f / %.6f' % (
-                epoch, i, running_loss / 100, best_rmse, best_mae))
+                epoch, i, running_loss / (i + 1), best_rmse, best_mae))
             running_loss = 0.0
     return 0
 
@@ -81,7 +82,7 @@ def main():
     parser.add_argument('--lr', type=float, default=0.001, metavar='LR', help='learning rate')
     parser.add_argument('--test_batch_size', type=int, default=1000, metavar='N', help='input batch size for testing')
     parser.add_argument('--epochs', type=int, default=100, metavar='N', help='number of epochs to train')
-    parser.add_argument('--data', type=str, default='data/Toy', metavar='N', help='number of epochs to train')    
+    parser.add_argument('--data', type=str, default='data/Toy', metavar='data-dir', help='path to directory with dataset')
     args = parser.parse_args()
 
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
@@ -102,9 +103,9 @@ def main():
         dp = dataPreprocess(dir_data)
         dp.preprocess()
         path_data = dir_data + '/dataset.pickle'
-    
+
     print('\n***** Data Loaded ****\n')
-            
+
     data_file = open(path_data, 'rb')
     if not dir_data == 'data/Toy':
         history_u_lists = pickle.load(data_file)
@@ -126,9 +127,10 @@ def main():
         num_users = max(max(usersL), max(train_u), max(test_u))
         num_items = max(max(list(train_v)), max(list(test_v)))
         num_ratings = ratings_list.__len__()
-        
+
     else:
-        history_u_lists, history_ur_lists, history_v_lists, history_vr_lists, train_u, train_v, train_r, test_u, test_v, test_r, social_adj_lists, ratings_list = pickle.load(data_file)
+        history_u_lists, history_ur_lists, history_v_lists, history_vr_lists, train_u, train_v, train_r, test_u, test_v, test_r, social_adj_lists, ratings_list = pickle.load(
+            data_file)
         num_users = history_u_lists.__len__()
         num_items = history_v_lists.__len__()
         num_ratings = ratings_list.__len__()
