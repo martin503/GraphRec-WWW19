@@ -22,8 +22,13 @@ class Social_Encoder(nn.Module):
 
         to_neighs = []
         for node in nodes:
-            to_neighs.append(self.social_adj_lists[int(node)])
+            if not int(node) in self.social_adj_lists:
+                to_neighs.append({})
+                print(int(node), end=',')
+            else:
+                to_neighs.append(self.social_adj_lists[int(node)])
         neigh_feats = self.aggregator.forward(nodes, to_neighs)  # user-user network
+        print()
 
         self_feats = self.features(torch.LongTensor(nodes.cpu().numpy())).to(self.device)
         self_feats = self_feats.t()

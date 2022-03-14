@@ -115,6 +115,10 @@ class dataPreprocess(object):
                 userUserDict[trust['userId'][index]] = {trust['friendID'][index]}
             else:
                 userUserDict[trust['userId'][index]].add(trust['friendID'][index])
+        # Artificial node for friendless users
+        for index in range(len(trust)):
+            if trust['userId'][index] not in userUserDict:
+                userUserDict[trust['userId'][index]] = {userCount + 1}
 
         ratings = []
         for i in userRatings.keys():

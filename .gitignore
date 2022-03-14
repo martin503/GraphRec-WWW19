@@ -1,3 +1,4 @@
 .devcontainer
 **/*.pickle
 **/__pycache__
+vanilla_graphrec.code-workspace
