@@ -107,33 +107,33 @@ def main():
     print('\n***** Data Loaded ****\n')
 
     data_file = open(path_data, 'rb')
-    if not dir_data == 'data/Toy':
-        history_u_lists = pickle.load(data_file)
-        history_ur_lists = pickle.load(data_file)
-        history_v_lists = pickle.load(data_file)
-        history_vr_lists = pickle.load(data_file)
-        train_u = pickle.load(data_file)
-        train_v = pickle.load(data_file)
-        train_r = pickle.load(data_file)
-        test_u = pickle.load(data_file)
-        test_v = pickle.load(data_file)
-        test_r = pickle.load(data_file)
-        social_adj_lists = pickle.load(data_file)
-        ratings_list = pickle.load(data_file)
-        users = pickle.load(data_file)
-        friends = pickle.load(data_file)
-        trust = pickle.load(data_file)
-        usersL = list(set(users+friends))
-        num_users = max(max(usersL), max(train_u), max(test_u))
-        num_items = max(max(list(train_v)), max(list(test_v)))
-        num_ratings = ratings_list.__len__()
+    # if not dir_data == 'data/Toy':
+    #     history_u_lists = pickle.load(data_file)
+    #     history_ur_lists = pickle.load(data_file)
+    #     history_v_lists = pickle.load(data_file)
+    #     history_vr_lists = pickle.load(data_file)
+    #     train_u = pickle.load(data_file)
+    #     train_v = pickle.load(data_file)
+    #     train_r = pickle.load(data_file)
+    #     test_u = pickle.load(data_file)
+    #     test_v = pickle.load(data_file)
+    #     test_r = pickle.load(data_file)
+    #     social_adj_lists = pickle.load(data_file)
+    #     ratings_list = pickle.load(data_file)
+    #     users = pickle.load(data_file)
+    #     friends = pickle.load(data_file)
+    #     trust = pickle.load(data_file)
+    #     usersL = list(set(users+friends))
+    #     num_users = max(max(usersL), max(train_u), max(test_u)) + 1
+    #     num_items = max(max(list(train_v)), max(list(test_v))) + 1
+    #     num_ratings = ratings_list.__len__()
 
-    else:
-        history_u_lists, history_ur_lists, history_v_lists, history_vr_lists, train_u, train_v, train_r, test_u, test_v, test_r, social_adj_lists, ratings_list = pickle.load(
-            data_file)
-        num_users = history_u_lists.__len__()
-        num_items = history_v_lists.__len__()
-        num_ratings = ratings_list.__len__()
+    # else:
+    history_u_lists, history_ur_lists, history_v_lists, history_vr_lists, train_u, train_v, train_r, test_u, test_v, test_r, social_adj_lists, ratings_list = pickle.load(
+        data_file)
+    num_users = history_u_lists.__len__()
+    num_items = history_v_lists.__len__()
+    num_ratings = ratings_list.__len__()
 
     """
     ## toy dataset 
@@ -148,6 +148,38 @@ def main():
     social_adj_lists: user's connected neighborhoods
     ratings_list: rating value from 0.5 to 4.0 (8 opinion embeddings)
     """
+    
+    def flatten(t):
+        return [item for sublist in t for item in sublist]
+    
+    print(70 in test_u)
+    # print(num_users)
+    print(num_items)
+    
+    
+    # print(min(train_u))
+    # print(max(train_u))
+    # print(min(train_v))
+    # print(max(train_v))
+    # print(sorted(set(train_r)))
+    # print(min(test_u))
+    # print(max(test_u))
+    # print(min(test_v))
+    # print(max(test_v))
+    # print(sorted(set(test_r)))
+    # print(history_u_lists)
+    # print(min(flatten(list(history_ur_lists.values()))))
+    # print(max(flatten(list(history_ur_lists.values()))))
+    # print(min(flatten(list(history_vr_lists.values()))))
+    # print(max(flatten(list(history_vr_lists.values()))))
+    # print(min(flatten(list(history_u_lists.values()))))
+    # print(max(flatten(list(history_u_lists.values()))))
+    # print(min(flatten(list(history_v_lists.values()))))
+    # print(max(flatten(list(history_v_lists.values()))))
+    # print(list(history_vr_lists.values())[:5])
+    # print(list(history_u_lists.values())[:5])
+    # print(list(history_v_lists.values())[:5])
+    # exit(0)
 
     trainset = torch.utils.data.TensorDataset(torch.LongTensor(train_u), torch.LongTensor(train_v),
                                               torch.FloatTensor(train_r))
@@ -162,6 +194,7 @@ def main():
 
     # user feature
     # features: item * rating
+    # print(history_u_lists[70])
     agg_u_history = UV_Aggregator(v2e, r2e, u2e, embed_dim, cuda=device, uv=True)
     enc_u_history = UV_Encoder(u2e, embed_dim, history_u_lists, history_ur_lists, agg_u_history, cuda=device, uv=True)
     # neighobrs
@@ -185,6 +218,7 @@ def main():
 
         train(graphrec, device, train_loader, optimizer, epoch, best_rmse, best_mae)
         expected_rmse, mae = test(graphrec, device, test_loader)
+        # expected_rmse, mae = 0, 0
         # please add the validation set to tune the hyper-parameters based on your datasets.
 
         # early stopping (no validation set in toy dataset)

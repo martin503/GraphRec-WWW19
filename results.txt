@@ -1,0 +1,42 @@
+Toy-original-local:
+
+Toy-updated-local:
+[1,     0] loss: 10.840, The best rmse/mae: 9999.000000 / 9999.000000
+[1,   100] loss: 8.067, The best rmse/mae: 9999.000000 / 9999.000000
+rmse: 2.5950, mae:2.4389 
+[2,     0] loss: 5.879, The best rmse/mae: 2.595010 / 2.438933
+[2,   100] loss: 4.051, The best rmse/mae: 2.595010 / 2.438933
+rmse: 1.3590, mae:1.1921 
+[3,     0] loss: 2.929, The best rmse/mae: 1.358955 / 1.192082
+[3,   100] loss: 2.089, The best rmse/mae: 1.358955 / 1.192082
+rmse: 1.4032, mae:1.1739 
+[4,     0] loss: 1.867, The best rmse/mae: 1.358955 / 1.192082
+[4,   100] loss: 1.575, The best rmse/mae: 1.358955 / 1.192082
+rmse: 0.8588, mae:0.6689 
+[5,     0] loss: 0.993, The best rmse/mae: 0.858775 / 0.668882
+[5,   100] loss: 1.345, The best rmse/mae: 0.858775 / 0.668882
+rmse: 0.8568, mae:0.6721 
+[6,     0] loss: 1.569, The best rmse/mae: 0.856797 / 0.672134
+[6,   100] loss: 1.245, The best rmse/mae: 0.856797 / 0.672134
+rmse: 0.9661, mae:0.7443 
+[7,     0] loss: 1.308, The best rmse/mae: 0.856797 / 0.672134
+[7,   100] loss: 1.121, The best rmse/mae: 0.856797 / 0.672134
+rmse: 0.8336, mae:0.6565 
+[8,     0] loss: 1.074, The best rmse/mae: 0.833577 / 0.656477
+[8,   100] loss: 1.050, The best rmse/mae: 0.833577 / 0.656477
+rmse: 0.8481, mae:0.6647 
+[9,     0] loss: 1.076, The best rmse/mae: 0.833577 / 0.656477
+[9,   100] loss: 0.989, The best rmse/mae: 0.833577 / 0.656477
+rmse: 0.8582, mae:0.6443 
+[10,     0] loss: 0.893, The best rmse/mae: 0.833577 / 0.656477
+[10,   100] loss: 0.937, The best rmse/mae: 0.833577 / 0.656477
+rmse: 0.9024, mae:0.6688
+
+Epinions-updated-local:
+
+Toy-original-odra:
+
+Toy-updated-odra:
+
+Epinions-updated-odra:
+

@@ -31,7 +31,7 @@ class UV_Aggregator(nn.Module):
         for i in range(len(history_uv)):
             history = history_uv[i]
             num_histroy_item = len(history)
-            tmp_label = random.randrange(self.r2e.weight.shape[0])
+            tmp_label = history_r[i]
 
             if self.uv == True:
                 # user component
