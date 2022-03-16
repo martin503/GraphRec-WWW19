@@ -40,19 +40,20 @@ If you use this code, please cite our paper:
 """
 
 
-def train(model, device, train_loader, optimizer, epoch, best_rmse, best_mae):
+def train(model, device, train_loader, optimizer, epoch, best_rmse, best_mae, report):
     model.train()
     running_loss = 0.0
-    for i, data in enumerate(train_loader, 0):
+    report_per = len(train_loader) // report
+    for i, data in enumerate(train_loader, 1):
         batch_nodes_u, batch_nodes_v, labels_list = data
         optimizer.zero_grad()
         loss = model.loss(batch_nodes_u.to(device), batch_nodes_v.to(device), labels_list.to(device))
         loss.backward(retain_graph=True)
         optimizer.step()
         running_loss += loss.item()
-        if i % 100 == 0:
-            print('[%d, %5d] loss: %.3f, The best rmse/mae: %.6f / %.6f' % (
-                epoch, i, running_loss / (i + 1), best_rmse, best_mae))
+        if i % report_per == 0:
+            print('[%d, %5d] running_loss: %.3f, loss: %.3f, best rmse/mae: %.6f / %.6f' % (
+                epoch, i, running_loss / i, loss, best_rmse, best_mae))
             running_loss = 0.0
     return 0
 
@@ -83,6 +84,7 @@ def main():
     parser.add_argument('--test_batch_size', type=int, default=1000, metavar='N', help='input batch size for testing')
     parser.add_argument('--epochs', type=int, default=100, metavar='N', help='number of epochs to train')
     parser.add_argument('--data', type=str, default='data/Toy', metavar='data-dir', help='path to directory with dataset')
+    parser.add_argument('--report', type=int, default=2, metavar='N', help='how often report in epoch')
     args = parser.parse_args()
 
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
@@ -104,7 +106,7 @@ def main():
         dp.preprocess()
         path_data = dir_data + '/dataset.pickle'
 
-    print('\n***** Data Loaded ****\n')
+    print('***** Data Loaded *****\n')
 
     data_file = open(path_data, 'rb')
     # if not dir_data == 'data/Toy':
@@ -213,10 +215,11 @@ def main():
     best_rmse = 9999.0
     best_mae = 9999.0
     endure_count = 0
-
+    
+    print("Training on " + ("cuda" if use_cuda else "cpu"))
     for epoch in range(1, args.epochs + 1):
 
-        train(graphrec, device, train_loader, optimizer, epoch, best_rmse, best_mae)
+        train(graphrec, device, train_loader, optimizer, epoch, best_rmse, best_mae, args.report)
         expected_rmse, mae = test(graphrec, device, test_loader)
         # expected_rmse, mae = 0, 0
         # please add the validation set to tune the hyper-parameters based on your datasets.
