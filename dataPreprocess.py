@@ -40,8 +40,6 @@ class dataPreprocess(object):
             itemId = row[1]
             rating = row[2]
             if userId not in users:
-                # if 47026 == userId:
-                #     print("Jest")
                 users.add(userId)
             if itemId not in items:
                 items.add(itemId)
@@ -66,13 +64,6 @@ class dataPreprocess(object):
         itemMapping = {k: i for i, k in zip(range(itemCount), items)}
         ratingsList = map(lambda x: [userMapping[x[0]], itemMapping[x[1]], x[2]], ratingsList)
         trustList = map(lambda x: [userMapping[x[0]], userMapping[x[1]], x[2]], ratingsList)
-        # for x in ratingsList:
-        #     if 47026 == x[0]:
-        #             print("Tu też jest")
-
-        # for x in trustData:
-        #     if 47026 == x[0] or 47026 == x[1]:
-        #             print("Tu też jest")
 
         newDF = pd.DataFrame(ratingsList, columns=['userId','itemId','rating'])
         X = np.array([newDF['userId'],newDF['itemId']]).T
@@ -108,11 +99,7 @@ class dataPreprocess(object):
                 userItemDict[train['userId'][index]].append(train['itemId'][index])
         for userId in range(userCount):
             if userId not in userItemDict:
-                # userItemDict[userId] = [itemCount]
                 userItemDict[userId] = []
-        # print(len(userItemDict))
-        # print(userCount)
-        # print(47026 in userItemDict)
 
         userRatings = {}
         for index in range(len(train)):
@@ -122,7 +109,6 @@ class dataPreprocess(object):
                 userRatings[train['userId'][index]].append(ratingDiscreteMapping[train['rating'][index]]) 
         for userId in range(userCount):
             if userId not in userRatings:
-                # userRatings[userId] = [itemCount]     
                 userRatings[userId] = []     
         
         itemUserDict = {}
@@ -133,10 +119,7 @@ class dataPreprocess(object):
                 itemUserDict[train['itemId'][index]].append(train['userId'][index])
         for itemId in range(itemCount):
             if itemId not in itemUserDict:
-                # itemUserDict[itemId] = [userCount]
                 itemUserDict[itemId] = []
-        # print(len(itemUserDict))
-        # print(itemCount)
 
         itemRatings = {}
         for index in range(len(train)):
@@ -146,7 +129,6 @@ class dataPreprocess(object):
                 itemRatings[train['itemId'][index]].append(ratingDiscreteMapping[train['rating'][index]])
         for itemId in range(itemCount):
             if itemId not in itemRatings:
-                # itemRatings[itemId] = [userCount]
                 itemRatings[itemId] = []
 
         trust = pd.DataFrame(trustList, columns=['userId','friendID','trust'])
@@ -159,7 +141,6 @@ class dataPreprocess(object):
                 userUserDict[trust['userId'][index]].add(trust['friendID'][index])
         for index in range(len(trust)):
             if trust['userId'][index] not in userUserDict:
-                # userUserDict[trust['userId'][index]] = {userCount}
                 userUserDict[trust['userId'][index]] = {}
 
         ratings = []
@@ -189,28 +170,4 @@ class dataPreprocess(object):
                          trainUsers, trainItems, trainRatings,
                          testUsers, testItems, testRatings,
                          userUserDict, ratingsL), files, pickle.HIGHEST_PROTOCOL)
-            
-            # pickle.dump(userItemDict, files, pickle.HIGHEST_PROTOCOL)
-            
-            # pickle.dump(userRatings, files, pickle.HIGHEST_PROTOCOL)
-            
-            # pickle.dump(itemUserDict, files, pickle.HIGHEST_PROTOCOL)
-            
-            # pickle.dump(itemRatings, files, pickle.HIGHEST_PROTOCOL)
-            
-            # pickle.dump(trainUsers, files, pickle.HIGHEST_PROTOCOL)
-            # pickle.dump(trainItems, files, pickle.HIGHEST_PROTOCOL)
-            # pickle.dump(trainRatings, files, pickle.HIGHEST_PROTOCOL)
-            
-            # pickle.dump(testUsers, files, pickle.HIGHEST_PROTOCOL)
-            # pickle.dump(testItems, files, pickle.HIGHEST_PROTOCOL)
-            # pickle.dump(testRatings, files, pickle.HIGHEST_PROTOCOL)
-
-            # pickle.dump(userUserDict, files, pickle.HIGHEST_PROTOCOL)
-
-            # pickle.dump(ratingsL, files, pickle.HIGHEST_PROTOCOL)
-
-            # pickle.dump(user, files, pickle.HIGHEST_PROTOCOL)
-            # pickle.dump(friend, files, pickle.HIGHEST_PROTOCOL)
-            # pickle.dump(trust, files, pickle.HIGHEST_PROTOCOL)
             
