@@ -152,9 +152,9 @@ def main():
     def flatten(t):
         return [item for sublist in t for item in sublist]
     
-    print(70 in test_u)
+    # print(70 in test_u)
     # print(num_users)
-    print(num_items)
+    # print(num_items)
     
     
     # print(min(train_u))

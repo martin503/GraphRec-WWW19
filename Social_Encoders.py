@@ -24,7 +24,7 @@ class Social_Encoder(nn.Module):
         for node in nodes:
             if not int(node) in self.social_adj_lists:
                 to_neighs.append({})
-                print(int(node), end=',')
+                # print(int(node), end=',')
             else:
                 to_neighs.append(self.social_adj_lists[int(node)])
         neigh_feats = self.aggregator.forward(nodes, to_neighs)  # user-user network

@@ -26,7 +26,7 @@ class dataPreprocess(object):
         '''
  
         ratingsData = np.loadtxt(self.filepath+'/ratings_data.txt', dtype = np.float32)
-        trustData = np.loadtxt(self.filepath+'/trust_data.txt', dtype = np.int32)
+        trustData = np.loadtxt(self.filepath+'/trust_data.txt', dtype = np.float32)
         
         ratingsList = []
         trustList = []
@@ -40,12 +40,23 @@ class dataPreprocess(object):
             itemId = row[1]
             rating = row[2]
             if userId not in users:
+                # if 47026 == userId:
+                #     print("Jest")
                 users.add(userId)
             if itemId not in items:
                 items.add(itemId)
             if rating not in ratings:
                 ratings.add(rating)
-            ratingsList.append([int(userId),int(itemId),rating])
+            ratingsList.append([int(userId), int(itemId), rating])
+        for row in trustData:
+            user1 = row[0]
+            user2 = row[1]
+            trust = row[2]
+            if user1 not in users:
+                users.add(user1)
+            if user2 not in users:
+                users.add(user2)
+            trustList.append([int(user1), int(user2), trust])
         
         userCount = len(users)
         itemCount = len(items)
@@ -54,12 +65,14 @@ class dataPreprocess(object):
         userMapping = {k: i for i, k in zip(range(userCount), users)}
         itemMapping = {k: i for i, k in zip(range(itemCount), items)}
         ratingsList = map(lambda x: [userMapping[x[0]], itemMapping[x[1]], x[2]], ratingsList)
+        trustList = map(lambda x: [userMapping[x[0]], userMapping[x[1]], x[2]], ratingsList)
+        # for x in ratingsList:
+        #     if 47026 == x[0]:
+        #             print("Tu też jest")
 
-        for row in trustData:
-            user1 = row[0]
-            user2 = row[1]
-            trust = row[2]
-            trustList.append([user1, user2, trust])
+        # for x in trustData:
+        #     if 47026 == x[0] or 47026 == x[1]:
+        #             print("Tu też jest")
 
         newDF = pd.DataFrame(ratingsList, columns=['userId','itemId','rating'])
         X = np.array([newDF['userId'],newDF['itemId']]).T
@@ -99,6 +112,7 @@ class dataPreprocess(object):
                 userItemDict[userId] = []
         # print(len(userItemDict))
         # print(userCount)
+        # print(47026 in userItemDict)
 
         userRatings = {}
         for index in range(len(train)):
@@ -121,8 +135,8 @@ class dataPreprocess(object):
             if itemId not in itemUserDict:
                 # itemUserDict[itemId] = [userCount]
                 itemUserDict[itemId] = []
-        print(len(itemUserDict))
-        print(itemCount)
+        # print(len(itemUserDict))
+        # print(itemCount)
 
         itemRatings = {}
         for index in range(len(train)):
@@ -143,7 +157,6 @@ class dataPreprocess(object):
                 userUserDict[trust['userId'][index]] = {trust['friendID'][index]}
             else:
                 userUserDict[trust['userId'][index]].add(trust['friendID'][index])
-        # Artificial node for friendless users
         for index in range(len(trust)):
             if trust['userId'][index] not in userUserDict:
                 # userUserDict[trust['userId'][index]] = {userCount}
