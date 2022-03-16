@@ -40,20 +40,24 @@ If you use this code, please cite our paper:
 """
 
 
-def train(model, device, train_loader, optimizer, epoch, best_rmse, best_mae, report):
+def train(model, device, train_loader, optimizer, epoch, report):
     model.train()
     running_loss = 0.0
     report_per = len(train_loader) // report
     for i, data in enumerate(train_loader, 1):
         batch_nodes_u, batch_nodes_v, labels_list = data
         optimizer.zero_grad()
-        loss = model.loss(batch_nodes_u.to(device), batch_nodes_v.to(device), labels_list.to(device))
+        val_output, loss = model.loss(batch_nodes_u.to(device), batch_nodes_v.to(device), labels_list.to(device))
         loss.backward(retain_graph=True)
         optimizer.step()
         running_loss += loss.item()
         if i % report_per == 0:
-            print('[%d, %5d] running_loss: %.3f, loss: %.3f, best rmse/mae: %.6f / %.6f' % (
-                epoch, i, running_loss / i, loss, best_rmse, best_mae))
+            tmp_pred = val_output.data.cpu().numpy()
+            target = labels_list.data.cpu().numpy()
+            expected_rmse = sqrt(mean_squared_error(tmp_pred, target))
+            mae = mean_absolute_error(tmp_pred, target)
+            print('[%d, %5d] running_loss: %.3f, loss: %.3f, rmse/mae: %.6f / %.6f' % (
+                epoch, i, running_loss / i, loss, expected_rmse, mae))
             running_loss = 0.0
     return 0
 
@@ -163,7 +167,7 @@ def main():
     print("Training on " + ("cuda" if use_cuda else "cpu"))
     for epoch in range(1, args.epochs + 1):
 
-        train(graphrec, device, train_loader, optimizer, epoch, best_rmse, best_mae, args.report)
+        train(graphrec, device, train_loader, optimizer, epoch, args.report)
         expected_rmse, mae = test(graphrec, device, test_loader)
         # expected_rmse, mae = 0, 0
         # please add the validation set to tune the hyper-parameters based on your datasets.
@@ -175,7 +179,7 @@ def main():
             endure_count = 0
         else:
             endure_count += 1
-        print("rmse: %.4f, mae:%.4f " % (expected_rmse, mae))
+        print("rmse: %.4f, mae:%.4f, best rmse: %.4f, best mae:%.4f" % (expected_rmse, mae, best_rmse, best_mae))
 
         if endure_count > 5:
             break
