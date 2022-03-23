@@ -42,7 +42,7 @@ If you use this code, please cite our paper:
 
 def train(model, device, train_loader, optimizer, epoch, report):
     model.train()
-    running_loss = 0.0
+    running_loss = 0.0 # accumulated avg batch loss
     report_per = len(train_loader) // report
     for i, data in enumerate(train_loader, 1):
         batch_nodes_u, batch_nodes_v, labels_list = data
@@ -54,11 +54,9 @@ def train(model, device, train_loader, optimizer, epoch, report):
         if i % report_per == 0:
             tmp_pred = val_output.data.cpu().numpy()
             target = labels_list.data.cpu().numpy()
-            expected_rmse = sqrt(mean_squared_error(tmp_pred, target))
+            rmse = sqrt(mean_squared_error(tmp_pred, target))
             mae = mean_absolute_error(tmp_pred, target)
-            print('[%d, %5d] running_loss: %.3f, loss: %.3f, rmse/mae: %.6f / %.6f' % (
-                epoch, i, running_loss / i, loss, expected_rmse, mae))
-            running_loss = 0.0
+            print('[%d, %5d] loss: %.3f, rmse/mae: %.6f / %.6f' % (epoch, i, running_loss / i, rmse, mae))
     return 0
 
 
@@ -179,7 +177,7 @@ def main():
             endure_count = 0
         else:
             endure_count += 1
-        print("rmse: %.4f, mae:%.4f, best rmse: %.4f, best mae:%.4f" % (expected_rmse, mae, best_rmse, best_mae))
+        print("rmse: %.4f, mae: %.4f, best rmse: %.4f, best mae: %.4f" % (expected_rmse, mae, best_rmse, best_mae))
 
         if endure_count > 5:
             break
