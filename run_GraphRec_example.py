@@ -160,7 +160,6 @@ def main():
 
     best_rmse = 9999.0
     best_mae = 9999.0
-    endure_count = 0
     
     print("Training on " + ("cuda" if use_cuda else "cpu"))
     for epoch in range(1, args.epochs + 1):
@@ -171,16 +170,9 @@ def main():
         # please add the validation set to tune the hyper-parameters based on your datasets.
 
         # early stopping (no validation set in toy dataset)
-        if best_rmse > expected_rmse:
-            best_rmse = expected_rmse
-            best_mae = mae
-            endure_count = 0
-        else:
-            endure_count += 1
+        best_rmse = min(expected_rmse, best_rmse)
+        best_mae = min(mae, best_mae)
         print("rmse: %.4f, mae: %.4f, best rmse: %.4f, best mae: %.4f" % (expected_rmse, mae, best_rmse, best_mae))
-
-        if endure_count > 5:
-            break
 
 
 if __name__ == "__main__":

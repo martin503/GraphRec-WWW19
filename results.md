@@ -88,5 +88,48 @@ sys     0m1.463s
 Epinions-updated *TODO* on 10 epochs:\
 cmd: `time python run_GraphRec_example.py --epochs=10 --report=3 --data="data/Epinions"`
 ```
-TODO
+[1,  1212] loss: 3.652, rmse/mae: 1.147614 / 0.920007
+[1,  2424] loss: 2.460, rmse/mae: 1.128691 / 0.902961
+[1,  3636] loss: 1.984, rmse/mae: 1.075248 / 0.805728
+rmse: 1.1803, mae: 0.9580, best rmse: 1.1803, best mae: 0.9580
+[2,  1212] loss: 0.937, rmse/mae: 1.016861 / 0.751861
+[2,  2424] loss: 0.933, rmse/mae: 1.059941 / 0.764065
+[2,  3636] loss: 0.927, rmse/mae: 0.923204 / 0.672035
+rmse: 1.1134, mae: 0.8743, best rmse: 1.1134, best mae: 0.8743
+[3,  1212] loss: 0.911, rmse/mae: 0.910941 / 0.703539
+[3,  2424] loss: 0.913, rmse/mae: 0.877984 / 0.698121
+[3,  3636] loss: 0.911, rmse/mae: 0.984299 / 0.776182
+rmse: 1.1068, mae: 0.8677, best rmse: 1.1068, best mae: 0.8677
+[4,  1212] loss: 0.903, rmse/mae: 0.925083 / 0.724766
+[4,  2424] loss: 0.903, rmse/mae: 0.830770 / 0.630295
+[4,  3636] loss: 0.904, rmse/mae: 0.939953 / 0.723346
+rmse: 1.1048, mae: 0.8667, best rmse: 1.1048, best mae: 0.8667
+[5,  1212] loss: 0.894, rmse/mae: 0.843049 / 0.646970
+[5,  2424] loss: 0.897, rmse/mae: 0.869283 / 0.663406
+[5,  3636] loss: 0.898, rmse/mae: 1.050970 / 0.776975
+rmse: 1.1286, mae: 0.8944, best rmse: 1.1048, best mae: 0.8667
+[6,  1212] loss: 0.899, rmse/mae: 1.136334 / 0.866011
+[6,  2424] loss: 0.895, rmse/mae: 0.943338 / 0.729685
+[6,  3636] loss: 0.894, rmse/mae: 0.799113 / 0.621950
+rmse: 1.1162, mae: 0.8753, best rmse: 1.1048, best mae: 0.8667
+[7,  1212] loss: 0.890, rmse/mae: 0.858814 / 0.672141
+[7,  2424] loss: 0.888, rmse/mae: 0.970410 / 0.748656
+[7,  3636] loss: 0.890, rmse/mae: 0.846993 / 0.654746
+rmse: 1.1157, mae: 0.8657, best rmse: 1.1048, best mae: 0.8657
+[8,  1212] loss: 0.889, rmse/mae: 0.923306 / 0.697750
+[8,  2424] loss: 0.889, rmse/mae: 1.039513 / 0.787957
+[8,  3636] loss: 0.885, rmse/mae: 0.990926 / 0.767294
+rmse: 1.0946, mae: 0.8497, best rmse: 1.0946, best mae: 0.8497
+[9,  1212] loss: 0.876, rmse/mae: 0.877977 / 0.717350
+[9,  2424] loss: 0.882, rmse/mae: 0.838019 / 0.658144
+[9,  3636] loss: 0.883, rmse/mae: 1.107228 / 0.835399
+rmse: 1.1045, mae: 0.8320, best rmse: 1.0946, best mae: 0.8320
+[10,  1212] loss: 0.885, rmse/mae: 0.933456 / 0.684324
+[10,  2424] loss: 0.881, rmse/mae: 1.028408 / 0.749405
+[10,  3636] loss: 0.880, rmse/mae: 1.036710 / 0.800852
+rmse: 1.0937, mae: 0.8489, best rmse: 1.0937, best mae: 0.8320
+
+real	716m50.536s
+user	718m2.100s
+sys	0m17.966s
 ```
