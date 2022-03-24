@@ -6,7 +6,7 @@ rmse: <rmse_over_whole_test_data>, mae: <mae_over_whole_test_data>, best rmse: <
 ```
 
 # Results
-Toy-original *16m29.381s* on 10 epochs\
+Toy-original *0h16m29s* on 10 epochs\
 cmd: `time python run_GraphRec_example.py`\
 (keep in mind that original version had bugs in reporting, to compare versions look at `rmse/mae` results in test section)
 ```
@@ -46,7 +46,7 @@ user    16m27.893s
 sys     0m1.535s
 ```
 
-Toy-updated *16m45.615s* on 10 epochs:\
+Toy-updated *0h16m45s* on 10 epochs:\
 cmd: `time python run_GraphRec_example.py --epochs=10`
 ```
 [1,    55] loss: 6.621, rmse/mae: 2.258805 / 2.060945
@@ -85,7 +85,7 @@ user    16m44.190s
 sys     0m1.463s
 ```
 
-Epinions-updated *TODO* on 10 epochs:\
+Epinions-updated *11h56m50s* on 10 epochs:\
 cmd: `time python run_GraphRec_example.py --epochs=10 --report=3 --data="data/Epinions"`
 ```
 [1,  1212] loss: 3.652, rmse/mae: 1.147614 / 0.920007
