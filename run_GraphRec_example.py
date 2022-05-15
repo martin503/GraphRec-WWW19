@@ -43,7 +43,7 @@ If you use this code, please cite our paper:
 def train(model, device, train_loader, optimizer, epoch, report):
     model.train()
     running_loss = 0.0 # accumulated avg batch loss
-    report_per = len(train_loader) // report
+    report_per = max(1, len(train_loader) // report)
     for i, data in enumerate(train_loader, 1):
         batch_nodes_u, batch_nodes_v, labels_list = data
         optimizer.zero_grad()
@@ -56,7 +56,7 @@ def train(model, device, train_loader, optimizer, epoch, report):
             target = labels_list.data.cpu().numpy()
             rmse = sqrt(mean_squared_error(tmp_pred, target))
             mae = mean_absolute_error(tmp_pred, target)
-            print('[%d, %5d] loss: %.3f, rmse/mae: %.6f / %.6f' % (epoch, i, running_loss / i, rmse, mae))
+            print('[%d, %5d] loss: %.3f, rmse/mae: %.3f / %.3f' % (epoch, i, running_loss / i, rmse, mae))
     return 0
 
 
@@ -83,8 +83,8 @@ def main():
     parser.add_argument('--batch_size', type=int, default=128, metavar='N', help='input batch size for training')
     parser.add_argument('--embed_dim', type=int, default=64, metavar='N', help='embedding size')
     parser.add_argument('--lr', type=float, default=0.001, metavar='LR', help='learning rate')
-    parser.add_argument('--test_batch_size', type=int, default=1000, metavar='N', help='input batch size for testing')
-    parser.add_argument('--epochs', type=int, default=100, metavar='N', help='number of epochs to train')
+    parser.add_argument('--test_batch_size', type=int, default=1024, metavar='N', help='input batch size for testing')
+    parser.add_argument('--epochs', type=int, default=10, metavar='N', help='number of epochs to train')
     parser.add_argument('--data', type=str, default='data/Toy', metavar='data-dir', help='path to directory with dataset')
     parser.add_argument('--report', type=int, default=2, metavar='N', help='how often report in epoch')
     args = parser.parse_args()
