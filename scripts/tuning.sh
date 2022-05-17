@@ -6,7 +6,7 @@ if [[ $# != 3 ]]; then
 fi
 
 lrs=(0.001)
-batch_sizes=(4096)
+batch_sizes=(128)
 embedding_dims=(64)
 
 for (( c=1; c<=$3; c++ )); do  
