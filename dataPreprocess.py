@@ -69,7 +69,7 @@ class dataPreprocess(object):
         X = np.array([newDF['userId'],newDF['itemId']]).T
         y = np.array([newDF['rating']]).T
 
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0, stratify=y)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=0, stratify=y)
         train = pd.DataFrame(X_train,columns = ['userId','itemId'])
         train['rating'] = pd.DataFrame(y_train)
         test = pd.DataFrame(X_test,columns = ['userId','itemId'])
