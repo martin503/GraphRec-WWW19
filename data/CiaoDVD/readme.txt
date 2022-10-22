@@ -76,7 +76,7 @@ Note: We throw aways products without any user reviews.
 ========================================= Review Information ========================================
 Writing on Ciao pays:
     1) Your experience helps others to make the right choices
-    2) Knowledge is cash: earn	 up to ¡ê3 for each review
+    2) Knowledge is cash: earn	 up to ï¿½ï¿½3 for each review
     3) Receive feedback and recognition for your contributions
 
 For each specific review: 

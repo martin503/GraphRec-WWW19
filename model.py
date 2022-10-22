@@ -48,4 +48,4 @@ class GraphRec(nn.Module):
 
     def loss(self, nodes_u, nodes_v, labels_list):
         scores = self.forward(nodes_u, nodes_v)
-        return self.criterion(scores, labels_list)
+        return scores, self.criterion(scores, labels_list)

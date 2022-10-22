@@ -1,0 +1,147 @@
+Round 1
+lr: 0.001, batch_size: 4096, embedding_dim: 64
+
+dataset.pickle not found. Generating a pickle file.......
+
+***** Data Loaded *****
+
+Training on cuda
+[1,    49] loss: 14.886, rmse/mae: 3.552 / 3.383
+[1,    98] loss: 12.721, rmse/mae: 2.934 / 2.713
+rmse: 3.1057, mae: 2.8740, best rmse: 3.1057, best mae: 2.8740
+[2,    49] loss: 7.261, rmse/mae: 2.434 / 2.166
+[2,    98] loss: 6.156, rmse/mae: 2.039 / 1.719
+rmse: 1.8770, mae: 1.6314, best rmse: 1.8770, best mae: 1.6314
+[3,    49] loss: 3.533, rmse/mae: 1.762 / 1.431
+[3,    98] loss: 3.159, rmse/mae: 1.615 / 1.308
+rmse: 1.5017, mae: 1.2323, best rmse: 1.5017, best mae: 1.2323
+[4,    49] loss: 2.438, rmse/mae: 1.517 / 1.217
+[4,    98] loss: 2.340, rmse/mae: 1.500 / 1.217
+rmse: 1.2443, mae: 1.0043, best rmse: 1.2443, best mae: 1.0043
+[5,    49] loss: 2.082, rmse/mae: 1.425 / 1.152
+[5,    98] loss: 2.022, rmse/mae: 1.376 / 1.109
+rmse: 1.3453, mae: 1.0638, best rmse: 1.2443, best mae: 1.0043
+[6,    49] loss: 1.866, rmse/mae: 1.376 / 1.100
+[6,    98] loss: 1.826, rmse/mae: 1.312 / 1.049
+rmse: 1.4351, mae: 1.1336, best rmse: 1.2443, best mae: 1.0043
+[7,    49] loss: 1.733, rmse/mae: 1.302 / 1.044
+[7,    98] loss: 1.719, rmse/mae: 1.286 / 1.039
+rmse: 1.3411, mae: 1.0686, best rmse: 1.2443, best mae: 1.0043
+[8,    49] loss: 1.673, rmse/mae: 1.284 / 1.019
+[8,    98] loss: 1.654, rmse/mae: 1.282 / 1.027
+rmse: 1.3839, mae: 1.0950, best rmse: 1.2443, best mae: 1.0043
+[9,    49] loss: 1.602, rmse/mae: 1.268 / 1.014
+[9,    98] loss: 1.592, rmse/mae: 1.294 / 1.018
+rmse: 1.2461, mae: 0.9890, best rmse: 1.2443, best mae: 0.9890
+[10,    49] loss: 1.546, rmse/mae: 1.227 / 0.975
+[10,    98] loss: 1.532, rmse/mae: 1.214 / 0.970
+rmse: 1.3127, mae: 1.0285, best rmse: 1.2443, best mae: 0.9890
+[11,    49] loss: 1.490, rmse/mae: 1.212 / 0.969
+[11,    98] loss: 1.478, rmse/mae: 1.245 / 1.001
+rmse: 1.2707, mae: 0.9962, best rmse: 1.2443, best mae: 0.9890
+[12,    49] loss: 1.437, rmse/mae: 1.190 / 0.954
+[12,    98] loss: 1.428, rmse/mae: 1.188 / 0.944
+rmse: 1.3035, mae: 1.0275, best rmse: 1.2443, best mae: 0.9890
+[13,    49] loss: 1.381, rmse/mae: 1.161 / 0.921
+[13,    98] loss: 1.373, rmse/mae: 1.135 / 0.905
+rmse: 1.3575, mae: 1.0644, best rmse: 1.2443, best mae: 0.9890
+[14,    49] loss: 1.331, rmse/mae: 1.135 / 0.898
+[14,    98] loss: 1.325, rmse/mae: 1.160 / 0.913
+rmse: 1.3294, mae: 1.0352, best rmse: 1.2443, best mae: 0.9890
+[15,    49] loss: 1.290, rmse/mae: 1.138 / 0.899
+[15,    98] loss: 1.280, rmse/mae: 1.130 / 0.898
+rmse: 1.3922, mae: 1.0823, best rmse: 1.2443, best mae: 0.9890
+[16,    49] loss: 1.219, rmse/mae: 1.083 / 0.854
+[16,    98] loss: 1.216, rmse/mae: 1.056 / 0.836
+rmse: 1.2589, mae: 0.9868, best rmse: 1.2443, best mae: 0.9868
+[17,    49] loss: 1.187, rmse/mae: 1.072 / 0.851
+[17,    98] loss: 1.180, rmse/mae: 1.105 / 0.873
+rmse: 1.3417, mae: 1.0484, best rmse: 1.2443, best mae: 0.9868
+[18,    49] loss: 1.148, rmse/mae: 1.058 / 0.836
+[18,    98] loss: 1.143, rmse/mae: 1.058 / 0.836
+rmse: 1.3247, mae: 1.0309, best rmse: 1.2443, best mae: 0.9868
+[19,    49] loss: 1.115, rmse/mae: 1.065 / 0.844
+[19,    98] loss: 1.106, rmse/mae: 1.021 / 0.814
+rmse: 1.3372, mae: 1.0295, best rmse: 1.2443, best mae: 0.9868
+[20,    49] loss: 1.078, rmse/mae: 1.034 / 0.826
+[20,    98] loss: 1.071, rmse/mae: 1.026 / 0.806
+rmse: 1.3366, mae: 1.0286, best rmse: 1.2443, best mae: 0.9868
+
+real	1149m47.548s
+user	1149m11.035s
+sys	0m20.193s
+Sat May 21 08:29:09 UTC 2022
+
+Round 2
+lr: 0.001, batch_size: 4096, embedding_dim: 64
+
+Pickle File Exists, No need to generate one....
+
+***** Data Loaded *****
+
+Training on cuda
+[1,    49] loss: 16.872, rmse/mae: 3.699 / 3.533
+[1,    98] loss: 14.673, rmse/mae: 3.332 / 3.142
+rmse: 3.3968, mae: 3.2012, best rmse: 3.3968, best mae: 3.2012
+[2,    49] loss: 10.213, rmse/mae: 3.001 / 2.773
+[2,    98] loss: 9.144, rmse/mae: 2.752 / 2.500
+rmse: 2.6864, mae: 2.4707, best rmse: 2.6864, best mae: 2.4707
+[3,    49] loss: 6.211, rmse/mae: 2.353 / 2.039
+[3,    98] loss: 5.431, rmse/mae: 1.960 / 1.617
+rmse: 1.8142, mae: 1.5913, best rmse: 1.8142, best mae: 1.5913
+[4,    49] loss: 3.480, rmse/mae: 1.745 / 1.417
+[4,    98] loss: 3.140, rmse/mae: 1.596 / 1.293
+rmse: 1.4677, mae: 1.2005, best rmse: 1.4677, best mae: 1.2005
+[5,    49] loss: 2.357, rmse/mae: 1.491 / 1.204
+[5,    98] loss: 2.241, rmse/mae: 1.386 / 1.127
+rmse: 1.4573, mae: 1.1770, best rmse: 1.4573, best mae: 1.1770
+[6,    49] loss: 1.995, rmse/mae: 1.427 / 1.147
+[6,    98] loss: 1.951, rmse/mae: 1.366 / 1.087
+rmse: 1.3096, mae: 1.0473, best rmse: 1.3096, best mae: 1.0473
+[7,    49] loss: 1.830, rmse/mae: 1.336 / 1.066
+[7,    98] loss: 1.786, rmse/mae: 1.316 / 1.062
+rmse: 1.3529, mae: 1.0860, best rmse: 1.3096, best mae: 1.0473
+[8,    49] loss: 1.696, rmse/mae: 1.277 / 1.019
+[8,    98] loss: 1.664, rmse/mae: 1.254 / 0.999
+rmse: 1.3683, mae: 1.0780, best rmse: 1.3096, best mae: 1.0473
+[9,    49] loss: 1.580, rmse/mae: 1.233 / 0.987
+[9,    98] loss: 1.556, rmse/mae: 1.173 / 0.932
+rmse: 1.4943, mae: 1.1757, best rmse: 1.3096, best mae: 1.0473
+[10,    49] loss: 1.499, rmse/mae: 1.215 / 0.963
+[10,    98] loss: 1.484, rmse/mae: 1.168 / 0.922
+rmse: 1.3881, mae: 1.0717, best rmse: 1.3096, best mae: 1.0473
+[11,    49] loss: 1.446, rmse/mae: 1.190 / 0.953
+[11,    98] loss: 1.433, rmse/mae: 1.179 / 0.925
+rmse: 1.3537, mae: 1.0496, best rmse: 1.3096, best mae: 1.0473
+[12,    49] loss: 1.401, rmse/mae: 1.170 / 0.929
+[12,    98] loss: 1.387, rmse/mae: 1.202 / 0.942
+rmse: 1.3770, mae: 1.0681, best rmse: 1.3096, best mae: 1.0473
+[13,    49] loss: 1.355, rmse/mae: 1.132 / 0.892
+[13,    98] loss: 1.342, rmse/mae: 1.161 / 0.909
+rmse: 1.4235, mae: 1.1328, best rmse: 1.3096, best mae: 1.0473
+[14,    49] loss: 1.310, rmse/mae: 1.127 / 0.899
+[14,    98] loss: 1.302, rmse/mae: 1.178 / 0.935
+rmse: 1.4866, mae: 1.1482, best rmse: 1.3096, best mae: 1.0473
+[15,    49] loss: 1.260, rmse/mae: 1.108 / 0.889
+[15,    98] loss: 1.256, rmse/mae: 1.118 / 0.896
+rmse: 1.3722, mae: 1.0620, best rmse: 1.3096, best mae: 1.0473
+[16,    49] loss: 1.233, rmse/mae: 1.100 / 0.876
+[16,    98] loss: 1.219, rmse/mae: 1.098 / 0.879
+rmse: 1.4297, mae: 1.1136, best rmse: 1.3096, best mae: 1.0473
+[17,    49] loss: 1.188, rmse/mae: 1.079 / 0.852
+[17,    98] loss: 1.181, rmse/mae: 1.084 / 0.851
+rmse: 1.4284, mae: 1.1133, best rmse: 1.3096, best mae: 1.0473
+[18,    49] loss: 1.147, rmse/mae: 1.065 / 0.842
+[18,    98] loss: 1.144, rmse/mae: 1.100 / 0.868
+rmse: 1.3005, mae: 0.9957, best rmse: 1.3005, best mae: 0.9957
+[19,    49] loss: 1.117, rmse/mae: 1.055 / 0.838
+[19,    98] loss: 1.112, rmse/mae: 1.083 / 0.860
+rmse: 1.3428, mae: 1.0603, best rmse: 1.3005, best mae: 0.9957
+[20,    49] loss: 1.083, rmse/mae: 1.041 / 0.823
+[20,    98] loss: 1.078, rmse/mae: 1.027 / 0.821
+rmse: 1.3361, mae: 1.0328, best rmse: 1.3005, best mae: 0.9957
+
+real	976m41.773s
+user	976m36.988s
+sys	0m16.272s
+Sun May 22 00:45:51 UTC 2022
